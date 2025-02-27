@@ -69,32 +69,28 @@
             text-decoration: underline;
         }
 
-        /* Add grid layout for side-by-side content */
+        /* Update grid layout for side-by-side content */
         .page-layout {
             display: grid;
-            grid-template-columns: 640px 357px;
-            gap: 30px;
-            max-width: none;  /* Remove max-width constraint */
-            margin: 0;  /* Remove auto margin */
-            margin-top: 240px;
-            padding-left: 40px;
-            padding-right: 40px;
-            position: relative;  /* For absolute positioning of right card */
+            grid-template-columns: 0.95fr 357px;
+            gap: 70px;
+            max-width: 1200px;
+            margin: 240px auto 0;
+            padding: 0 40px;
         }
 
-        /* Update image grid part container positioning */
+        /* Update image grid container positioning */
         .image-grid-container {
             background: transparent;
             padding: 15px;
             border-radius: 8px;
             box-shadow: none;
-            margin-top: 40px;
-            width: 357px;  /* Fixed width */
-            position: absolute;  /* Position relative to page layout */
-            right: 40px;  /* Distance from right edge */
+            margin-top: 0;
+            width: 357px;
+            position: relative;  /* Change from absolute to relative */
         }
 
-        /* Update card margin */
+        /* Update card styles */
         .card {
             background: white;
             padding: 30px;
@@ -141,14 +137,18 @@
         @media (max-width: 900px) {
             .page-layout {
                 grid-template-columns: 1fr;
+                margin-top: 120px;  /* Reduce top margin on mobile */
+                padding: 20px;
             }
-            .card {
-                width: auto;  /* Allow card to be responsive on mobile */
+            
+            .image-grid-container {
+                width: 100%;  /* Allow full width on mobile */
+                margin-top: 30px;  /* Add space between cards */
             }
+            
             .image-grid {
-                height: 600px;  /* Keep same height */
-                grid-template-columns: repeat(2, 1fr);  /* Keep 2 columns */
-                grid-template-rows: repeat(4, 1fr);     /* Keep 4 rows */
+                height: auto;  /* Allow height to adjust based on content */
+                min-height: 600px;
             }
         }
 
