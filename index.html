@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A+ Rise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #D0F0C0;
+            color: #4682B4;
+            line-height: 1.6;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 30px;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        nav h2 {
+            color: #3498db;
+            font-size: 1.5em;
+        }
+        
+        h2, h3, h4 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 3.4px 8.5px rgba(0,0,0,0.17);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+
+        li a {
+            color: #4682B4;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        li a:hover {
+            color: #4682B4;
+            text-decoration: underline;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            color: #4682B4;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive Navigation */
+        .nav-container {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: #3498db;
+            text-decoration: none;
+        }
+
+        /* Enhanced Section Styling */
+        .section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+
+        /* Link Card Styles */
+        .link-card {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 300px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5.1px 17px rgba(0,0,0,0.34);
+            z-index: 100;
+        }
+
+        .link-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .link-card ul {
+            margin: 0;
+        }
+
+        .link-card li {
+            margin-bottom: 8px;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-button:hover {
+            color: #333;
+        }
+
+        /* Show/Hide Button */
+        .show-links-btn {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+        .show-links-btn:hover {
+            background: #2980b9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Add new styles for two-column layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Three Column Layout for Cards */
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;  /* First row auto height */
+            gap: 15px;
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        /* Section Card Styling */
+        .section {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3.4px 8.5px rgba(0,0,0,0.17);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+            height: auto;
+            font-size: 0.9em;  /* Reduce base font size by 10% */
+        }
+
+        /* Adjust heading sizes in cards */
+        .section h2 {
+            font-size: 1.35em;  /* Reduced from 1.5em */
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            font-size: 1.17em;  /* Reduced from 1.3em */
+        }
+
+        .section h4 {
+            font-size: 1.08em;  /* Reduced from 1.2em */
+        }
+
+        /* Adjust link size in cards */
+        .section a[href*="meetup"] {
+            font-size: 0.9em;  /* Match the reduced font size */
+        }
+
+        /* First row cards */
+        .section:nth-child(-n+3) {
+            max-height: 660px;
+            overflow-y: auto;
+        }
+
+        /* Specific height for Hardware Resources card */
+        .section:nth-child(2) {
+            max-height: 792px;  /* Increased from 660px by 20% */
+            overflow-y: auto;
+        }
+
+        /* Second row cards */
+        .section:nth-child(n+4) {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* Adjust content spacing within cards */
+        .section h2, .section h3, .section h4 {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        .section ul {
+            margin: 5px 0;
+        }
+
+        .section li {
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        /* Adjust two-columns layout spacing */
+        .two-columns {
+            gap: 8px;
+        }
+
+        /* Image Carousel Styles */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 160px 0 20px;  /* Keep existing margin */
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 125px;
+        }
+
+        .carousel img {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            left: 0;
+            object-fit: contain;
+            object-position: left;
+            opacity: 1;
+            animation: slideIn 48s infinite;  /* Increased from 32s to 48s for longer delays */
+            z-index: 1;
+        }
+
+        .carousel img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .carousel img:nth-child(2) {
+            animation-delay: 12s;  /* Increased from 8s to 12s */
+        }
+
+        .carousel img:nth-child(3) {
+            animation-delay: 24s;  /* Increased from 16s to 24s */
+        }
+
+        .carousel img:nth-child(4) {
+            animation-delay: 36s;  /* Increased from 24s to 36s */
+        }
+
+        @keyframes slideIn {
+            0%, 30% {
+                transform: translateX(100%);
+                z-index: 2;
+            }
+            33%, 97% {
+                transform: translateX(0);
+                z-index: 2;
+            }
+            100% {
+                transform: translateX(-100%);
+                z-index: 1;
+            }
+        }
+
+        .carousel:hover img {
+            animation-play-state: paused;
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 255px;
+            height: auto;
+            z-index: 10;
+            margin-bottom: 20px;  /* Add space below logo */
+        }
+
+        /* Update image grid styles */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 3px;
+            margin-top: 15px;
+            height: 300px;  /* Reduced from 374px by 20% */
+        }
+
+        .image-grid img {
+            width: 95%;
+            height: 95%;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(8, 1fr);
+                height: 598px;  /* Reduced from 748px by 20% */
+                gap: 3px;
+            }
+        }
+
+        /* Adjust image grid for transparent card */
+        .section:nth-child(3) {
+            background: transparent;
+            box-shadow: none;  /* Remove shadow for better transparency effect */
+            padding: 0;  /* Remove padding to let images extend to edges */
+        }
+
+        /* Adjust image grid for transparent card */
+        .section:nth-child(3) .image-grid {
+            margin-top: 0;
+            height: 300px;
+            gap: 3px;
+        }
+
+        .section:nth-child(3) .image-grid img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 6px;  /* Slightly increase border radius */
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);  /* Add shadow to individual images */
+            margin: 0 auto;  /* Center images */
+            display: block;
+        }
+
+        /* Update style for the meetups link */
+        .section a[href*="meetup"] {
+            text-decoration: none;
+            color: #4682B4;
+            display: block;
+            text-align: left;  /* Changed from center to left */
+            margin-top: 10px;
+            margin-left: 15px;  /* Added left margin for alignment */
+        }
+
+        .section a[href*="meetup"]:hover {
+            color: #4682B4;
+        }
+
+        /* Add specific styling for the last card (Great Tech Blogs) */
+        .section:last-child {
+            background: transparent;
+            box-shadow: none;  /* Remove shadow for better transparency effect */
+            padding: 0;  /* Remove padding to let content extend to edges */
+        }
+
+        /* Adjust content spacing for transparent card */
+        .section:last-child h3 {
+            margin: 15px;  /* Add margin to heading */
+            color: #4682B4;  /* Ensure heading is visible on green background */
+        }
+
+        .section:last-child .two-columns {
+            padding: 0 15px;  /* Add padding to list container */
+        }
+
+        .section:last-child .meetup-link {
+            margin: 15px;  /* Adjust margin for link */
+        }
+
+        /* Remove specific font styling for Hardware Resources section since it's now global */
+        .section:nth-child(2) h2,
+        .section:nth-child(2) h4,
+        .section:nth-child(2) ul {
+            font-weight: normal;  /* Keep this but remove font-family */
+            color: #4682B4;
+        }
+
+        /* Ensure all headings use Arial */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            color: #4682B4;
+        }
+
+        /* Specific styling for Hardware for A.I. card */
+        .section:nth-child(5) ul {
+            margin: 0;
+        }
+
+        .section:nth-child(5) li {
+            margin-bottom: 12px;  /* Changed from 3px to 12px */
+            line-height: 1.2;
+        }
+
+        .section:nth-child(5) li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Specific styling for A+ Certification Info Sites card */
+        .section:nth-child(4) ul {
+            margin: 0;
+        }
+
+        .section:nth-child(4) li {
+            margin-bottom: 12px;  /* Set spacing between lines to 12px */
+            line-height: 1.2;
+        }
+
+        .section:nth-child(4) li:last-child {
+            margin-bottom: 0;  /* Remove margin from last item */
+        }
+
+        /* Style for linked images in grid */
+        .image-grid a {
+            display: block;
+            width: 90%;
+            height: 90%;
+            margin: 0 auto;
+        }
+
+        .image-grid a img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style for spec headings in Hardware Resources */
+        .section:nth-child(2) h4:contains('Spec') {
+            color: black;
+        }
+
+        /* Since :contains isn't widely supported, let's add a class */
+        .spec-heading {
+            color: black !important;  /* Override the previous color setting */
+        }
+
+        /* Style for Resources and Tips headings in A+ Certification Info Sites card */
+        .section:nth-child(4) h4 {
+            color: black !important;  /* Override the previous color setting */
+        }
+
+        /* About section styling */
+        .about-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: transparent;
+            color: #4682B4;
+            line-height: 1.8;
+        }
+
+        .about-section h2 {
+            color: black;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+        }
+
+        .about-section .email {
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        /* Update About link styling */
+        .about-link {
+            position: absolute;
+            top: 140px;  /* Position above carousel (160px - 10px - font size) */
+            right: 100px;
+            color: #4682B4;
+            text-decoration: none;
+            font-size: 1.2em;
+            z-index: 10;
+        }
+
+        .about-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/aplusimg1.png" alt="A+ Certification Logo" class="logo">
+    <a href="about.html" class="about-link">About</a>
+    
+    <header>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="img/Dimm1-1271x113.jpg" alt="Dimm">
+                <img src="img/heatsink1-1400x125.jpg" alt="Heat Sink">
+                <img src="img/board3-e1382258430301-772x68.jpg" alt="Board">
+                <img src="img/SSDDrive-1400x125.jpg" alt="SSD Drive">
+            </div>
+        </div>
+    </header>
+
+    <button class="show-links-btn" id="showLinksBtn">Forum Links</button>
+
+    <div class="link-card hidden" id="linkCard">
+        <button class="close-button" id="closeCard">&times;</button>
+        <h3>Quick Cert Forum Links</h3>
+        <ul>
+            <li><a href="https://www.techexams.net/forums/comptia/" target="_blank">TechExams</a></li>
+            <li><a href="https://www.certforums.com/" target="_blank">CertForums</a></li>
+            <li><a href="https://www.tek-tips.com/" target="_blank">Tek-Tips</a></li>
+            <li><a href="https://www.bleepingcomputer.com/forums/" target="_blank">BleepingComputer</a></li>
+            <li><a href="https://forums.tomshardware.com/" target="_blank">TomsHardware</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="section">
+            <h2>Forum Tips for A+ Certification</h2>
+            <ul>
+                <li><a href="https://www.techexams.net/forums/comptia/" target="_blank">TechExams</a></li>
+                <li><a href="https://www.certforums.com/" target="_blank">CertForums</a></li>
+                <li><a href="https://www.tek-tips.com/" target="_blank">Tek-Tips</a></li>
+                <li><a href="https://www.bleepingcomputer.com/forums/" target="_blank">BleepingComputer</a></li>
+                <li><a href="https://forums.tomshardware.com/" target="_blank">TomsHardware</a></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Hardware Resources</h2>
+            
+            <h4 class="spec-heading">Processor Spec Sites</h4>
+            <ul>
+                <li><a href="https://www.intel.com/content/www/us/en/ark.html#@Processors" target="_blank">Intel Info</a></li>
+                <li><a href="https://www.amd.com/en/products/specifications/processors.html" target="_blank">AMD Info</a></li>
+                <li><a href="https://www.nvidia.com/en-us/geforce/" target="_blank">Nvidia Info</a></li>
+            </ul>
+
+            <h4 class="spec-heading">CPU Cooler Spec Sites</h4>
+            <ul>
+                <li><a href="https://www.corsair.com/us/en/s/cpu-coolers-comparison" target="_blank">Corsair Info</a></li>
+                <li><a href="https://www.deepcool.com/" target="_blank">Deepcool Info</a></li>
+                <li><a href="https://www.zalman.com/" target="_blank">Zalman Info</a></li>
+            </ul>
+
+            <h4 class="spec-heading">Graphics Card Spec Sites</h4>
+            <ul>
+                <li><a href="https://www.nvidia.com/en-us/geforce/" target="_blank">Nvidia Info</a></li>
+                <li><a href="https://www.amd.com/en/products/specifications/graphics.html" target="_blank">AMD Info</a></li>
+                <li><a href="https://www.asus.com/graphics-cards/" target="_blank">ASUS Info</a></li>
+            </ul>
+
+            <h4 class="spec-heading">RAM Spec Sites</h4>
+            <ul>
+                <li><a href="https://www.corsair.com/memory" target="_blank">Corsair Info</a></li>
+                <li><a href="https://semiconductor.samsung.com/dram/" target="_blank">Samsung Info</a></li>
+                <li><a href="https://www.crucial.com/" target="_blank">Crucial Info</a></li>
+            </ul>
+
+            <h4 class="spec-heading">Hard Drive Spec Sites</h4>
+            <ul>
+                <li><a href="https://www.seagate.com/" target="_blank">Seagate Info</a></li>
+                <li><a href="https://toshiba.semicon-storage.com/us/storage.html" target="_blank">Toshiba Info</a></li>
+                <li><a href="https://www.westerndigital.com/" target="_blank">Western Digital Info</a></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="image-grid">
+                <a href="https://www.youtube.com/@BWOne/videos" target="_blank">
+                    <img src="img/ATile-1.jpg" alt="A Tile">
+                </a>
+                <a href="https://nsbe.org" target="_blank"><img src="img/NsbeTile1.jpg" alt="Bit Tile"></a>
+                <a href="https://code2040.org" target="_blank">
+                    <img src="img/c2040.png" alt="Code2040">
+                </a>
+                <a href="https://www.youtube.com/channel/UCBJycsmduvYEL83R_U4JriQ" target="_blank">
+                    <img src="img/ml-1.jpg" alt="M Tile">
+                </a>
+                <img src="img/MTile-1.jpg" alt="NBL">
+                <a href="https://blueskystarterpack.com/search?q=black+tech" target="_blank"><img src="img/bsky1.png" alt="Bsky">
+                <a href="http://blacksintechnology.org" target="_blank"><img src="img/BitTile-1.jpg" alt="NSBE Tile"></a>
+                <a href="https://www.youtube.com/@UrAvgConsumer" target="_blank"><img src="img/ul-1.jpg" alt="UL"></a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>A+ Certification Info Sites</h2>
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="http://aplus-certification.blogspot.com" target="_blank">aplus-certification.blogspot.com</a></li>
+                <li><a href="http://www.brainbell.com" target="_blank">brainbell.com</a></li>
+                <li><a href="https://itfreetraining.com/course/ap/" target="_blank">itfreetraining.com</a></li>
+                <li><a href="http://www.tipsforcomputer.com" target="_blank">tipsforcomputer.com</a></li>
+            </ul>
+
+            <h4>Tips</h4>
+            <ul>
+                <li><a href="https://www.comptia.org/certifications/a" target="_blank">CompTIA A+ Certification Basics</a></li>
+                <li><a href="https://transcender.wordpress.com/tag/a/" target="_blank">A Multi-part Dive into the A+ Certification</a></li>
+                <li><a href="https://www.examguides.com/Aplus-Core1/aplus-core1-1.htm" target="_blank">Study Summaries for Passing the Exam</a></li>
+                <li><a href="https://www.comptia.org/certifications/a#exampreparation" target="_blank">Basic Exam info forCompTIA A+ Certification</a></li>
+                <li><a href="https://www.pocketprep.com/posts/learn-what-to-study-for-the-comptia-a-examination/" target="_blank">Tips for Parts of A+ Certification</a></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Hardware for A.I.</h2>
+            
+            <ul>
+                <li><a href="https://www.amd.com/en/products/processors/server/epyc.html" target="_blank">AMD Epyc A.I Chips</a></li>
+                
+                <li><a href="https://www.intel.com/content/www/us/en/products/details/processors/core-ultra.html" target="_blank">Intel Core Ultra A.I. Accelerator Chips</a></li>
+                
+                <li><a href="https://www.intel.com/content/www/us/en/developer/articles/technical/ai-inference-acceleration-on-intel-cpus.html" target="_blank">Intel Inference on CPU's</a></li>
+                
+                <li><a href="https://coral.ai/products/" target="_blank">Google CPU's for A.I. Prototypes</a></li>
+                
+                <li><a href="https://www.nvidia.com/en-us/data-center/l40s/?ncid=no-ncid" target="_blank">Nvidia L40S Accelerator for A.I.</a></li>
+                
+                <li><a href="https://aws.amazon.com/ai/machine-learning/inferentia/" target="_blank">Amazon A.I. Chip</a></li>
+                
+                <li><a href="https://cerebras.ai/product-chip/" target="_blank">Cerebras A.I. Chip</a></li>
+                
+                <li><a href="https://www.edgecortix.com/en/products/sakura" target="_blank">EdgeCortix A.I. Accelerator Chip</a></li>
+                
+                <li><a href="https://www.blaize.com/products/" target="_blank">Blaize A.I. Accelerator Modules</a></li>
+                
+                <li><a href="https://sambanova.ai/blog/sn40l-chip-best-inference-solution" target="_blank">SambaNova A.I. Chip</a></li>
+                
+                <li><a href="https://www.etched.com/" target="_blank">Etched A.I. ASIC Chip</a></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h3>Great Tech Blogs</h3>
+            <img src="img/button7.gif" alt="Tech Blogs Button" style="width: 40%; height: auto; margin: 3px auto; display: block; grid-column: 1 / -1;">
+
+            <ul class="two-columns">
+                
+                <li><a href="https://www.bwone.com/" target="_blank">BWOne</a></li>
+                <li><a href="http://thecubiclechick.com/" target="_blank" rel="noopener">CubicleChick</a></li>
+                <li><a href="http://rubybookclub.com/" target="_blank">Ruby Book Club</a></li>
+                <li><a href="https://www.youtube.com/@amigoscode" target="_blank" rel="noopener">AmigosCode</a></li>
+                <li><a href="https://mkbhd.com/" target="_blank" rel="noopener">MKBHD</a></li>
+                <li><a href="http://blackgirlscode.org/" target="_blank" rel="noopener">Black Girls Code</a></li>
+                <li><a href="http://revisionpath.com/" target="_blank" rel="noopener">RevisionPath</a></li>
+                <li><a href="http://www.blackgirlnerds.com/" target="_blank" rel="noopener">BlackGirlNerds</a></li>
+                <li><a href="https://blacksintechnology.org" target="_blank" rel="noopener">BitDigest</a></li>
+                <li><a href="http://codenewbie.org/" target="_blank">CodeNewbie</a></li>
+                <li><a href="http://www.glassesandglitter.com/" target="_blank">Glasses and Glitter</a></li>
+                <li><a href="http://www.techguysmartbuy.com/" target="_blank" rel="noopener">TechGuySmartBuy</a></li>
+                <li><a href="http://www.blackenterprise.com/technology" target="_blank">Tech at Black Enterprise</a></li>
+                <li><a href="https://www.youtube.com/@BuildAppsWithPaulo/videos" target="_blank">Build Apps with Paulo</a></li>
+                <li><a href="http://www.luv2code.com/" target="_blank">Luv2Code</a></li>
+            </ul>
+            <img src="img/button7.gif" alt="Tech Blogs Button" style="width: 40%; height: auto; margin: 3px auto; display: block;">
+
+            <a href="https://www.meetup.com/find/?location=us--mi--Detroit&source=EVENTS&keywords=tech&distance=anyDistance" target="_blank" class="meetup-link">Upcoming Meetups</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>aPlusRise © 2025</p>
+    </footer>
+
+    <script>
+        const showLinksBtn = document.getElementById('showLinksBtn');
+        const linkCard = document.getElementById('linkCard');
+        const closeCard = document.getElementById('closeCard');
+
+        showLinksBtn.addEventListener('click', () => {
+            linkCard.classList.remove('hidden');
+            showLinksBtn.classList.add('hidden');
+        });
+
+        closeCard.addEventListener('click', () => {
+            linkCard.classList.add('hidden');
+            showLinksBtn.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html> 

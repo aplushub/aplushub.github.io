@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - A+ Rise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #D0F0C0;
+            color: #4682B4;
+            line-height: 1.8;
+        }
+
+        .about-container {
+            max-width: none;
+            margin: 0;
+        }
+
+        h1 {
+            color: black;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #4682B4;
+        }
+
+        /* Update email styling */
+        .email {
+            margin-top: 30px;
+            font-style: italic;
+            text-align: center;
+            color: #4682B4;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .email-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            color: #4682B4;
+            text-decoration: none;
+            padding-top: 15px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Add grid layout for side-by-side content */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 640px 357px;
+            gap: 30px;
+            max-width: none;  /* Remove max-width constraint */
+            margin: 0;  /* Remove auto margin */
+            margin-top: 240px;
+            padding-left: 40px;
+            padding-right: 40px;
+            position: relative;  /* For absolute positioning of right card */
+        }
+
+        /* Update image grid container positioning */
+        .image-grid-container {
+            background: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: none;
+            margin-top: 40px;
+            width: 357px;  /* Fixed width */
+            position: absolute;  /* Position relative to page layout */
+            right: 40px;  /* Distance from right edge */
+        }
+
+        /* Update card margin */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3.4px 8.5px rgba(0,0,0,0.17);
+            margin-top: 0;
+            width: 100%;
+        }
+
+        /* Update image grid layout */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 3px;
+            height: 600px;
+            margin-top: 0;
+            width: 100%;  /* Ensure grid uses full width */
+        }
+
+        .image-grid img {
+            width: 95%;
+            height: 95%;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);  /* Keep shadow on individual images */
+            margin: 0 auto;
+            display: block;
+        }
+
+        .image-grid a {
+            display: block;
+            width: 90%;
+            height: 90%;
+            margin: 0 auto;
+        }
+
+        .image-grid a img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Update responsive layout */
+        @media (max-width: 900px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                width: auto;  /* Allow card to be responsive on mobile */
+            }
+            .image-grid {
+                height: 600px;  /* Keep same height */
+                grid-template-columns: repeat(2, 1fr);  /* Keep 2 columns */
+                grid-template-rows: repeat(4, 1fr);     /* Keep 4 rows */
+            }
+        }
+
+        /* Add logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 255px;
+            height: auto;
+            z-index: 10;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/aplusimg1.png" alt="A+ Certification Logo" class="logo">
+    <div class="page-layout">
+        <div class="card">
+            <div class="about-container">
+                <h1>About</h1>
+                <p>This blog is up to offer information for computer hardware essentials on the A+ certification. It will have a range of info to assist with completing it. The A+ certification is kind of like a permit, which gives you an official stamp for putting together and repairing PC hardware. Its full program name is CompTIA A+ Certification. It's great for work and improving parts of your hobbies.</p>
+                
+                <p>You'll come across info on hardware tips, exam material, exam locations, assembly tips and several other resources to take it. Through learning these approaches you'll be able to put together a computer, and repair some parts. This is a great way to get familiar with computers, while seeing pieces of hardware from a different perspective.</p>
+                
+                <p>The site will also recommend some good material to add to what you see online for A+ info. It's a great way to jump into the industry and add to your expanding knowledge. There will be updates from Black tech sites along the right, too.</p>
+                
+                <p>If you'd like something added to the site, just drop us a message, feedback is appreciated! From link lights to zettabytes!</p>
+                
+                <p class="email">
+                    <img src="img/envpic1.png" alt="Email" class="email-icon">
+                    aplusrise@gmail.com
+                </p>
+
+                <a href="index.html" class="back-link">Back</a>
+            </div>
+        </div>
+
+        <div class="image-grid-container">
+            <div class="image-grid">
+                <a href="https://www.youtube.com/@BWOne/videos" target="_blank">
+                    <img src="img/ATile-1.jpg" alt="A Tile">
+                </a>
+                <a href="https://nsbe.org" target="_blank"><img src="img/NsbeTile1.jpg" alt="Bit Tile"></a>
+                <a href="https://code2040.org" target="_blank">
+                    <img src="img/c2040.png" alt="Code2040">
+                </a>
+                <a href="https://www.youtube.com/channel/UCBJycsmduvYEL83R_U4JriQ" target="_blank">
+                    <img src="img/ml-1.jpg" alt="M Tile">
+                </a>
+                <img src="img/MTile-1.jpg" alt="NBL">
+                <a href="https://blueskystarterpack.com/search?q=black+tech" target="_blank"><img src="img/bsky1.png" alt="Bsky"></a>
+                <a href="http://blacksintechnology.org" target="_blank"><img src="img/BitTile-1.jpg" alt="NSBE Tile"></a>
+                <a href="https://www.youtube.com/@UrAvgConsumer" target="_blank"><img src="img/ul-1.jpg" alt="UL"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
