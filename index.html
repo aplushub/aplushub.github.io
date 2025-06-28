@@ -750,7 +750,7 @@
     <footer>
         <p>aPlusRise © 2025</p>
     </footer>
-
+ <!-- 
     <script>
         const showLinksBtn = document.getElementById('showLinksBtn');
         const linkCard = document.getElementById('linkCard');
@@ -767,9 +767,28 @@
         });
     </script>
 
-    <!-- Elfsight Subscription Form | APR-Form1 -->
+   Elfsight Subscription Form | APR-Form1 -->
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 <div class="elfsight-app-7e2f2a2b-a52e-40e3-8778-a74374332697" data-elfsight-app-lazy></div>
+
+
+    <form name="submit-to-google-sheet">
+  <input name="email" type="email" placeholder="Email" required>
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby4_breZcOGe_pKdv6NNr1exlokKoDRS3awNVYwmn7_5PtAU_i36FWuGHOwfn6F6Pw/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
     
 </body>
 </html> 
